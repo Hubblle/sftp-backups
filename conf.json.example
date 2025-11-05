@@ -1,0 +1,4 @@
+{
+    "time": Time in minutes between backups,
+    "starting folder": "the starting folder of the backup (/ for a full backup)"
+}
