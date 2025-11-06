@@ -53,6 +53,7 @@ print("-By __Hubble\n")
 #Main loop
 if __name__ == "__main__":
     logger.info("Starting main loop !")
+    print("done")
     while True:
         time.sleep(0.5)
         
