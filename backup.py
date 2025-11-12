@@ -12,7 +12,7 @@ load_dotenv()
 class Backup():
     def __init__(self, conf:dict):
         #setup config
-        self.hostname=os.getenv("HOSTNAME")
+        self.hostname=os.getenv("ADDRESS")
         self.port=str(os.getenv("PORT"))
         self.username=os.getenv("SSHUSER")
         self.password=os.getenv("PASSWORD")
