@@ -16,11 +16,10 @@ import os
 
 #define variables
 with open("./conf.json", "r") as f:
-    data = json.load(f)
-    timing = int(data["time"])
-    folder = data["starting folder"]
-    del data 
-    
+    config = json.load(f)
+    timing = int(config["time"])
+    folder = config["starting folder"]
+
 last_save = 0
 
 if not os.path.exists("./last_save.json"):
@@ -34,7 +33,7 @@ else:
         
 
 #automatically gets credit in the .env    
-backuper = backup.Backup()
+backuper = backup.Backup(conf=config)
 
 #Make the logger
 logger = logging.Logger("Main")
@@ -58,7 +57,7 @@ if __name__ == "__main__":
         time.sleep(0.5)
         
         #compare last backup time to now:
-        dif = time.time() - last_save
+        dif = time.time() - last_save*60
         if dif >= timing:
             logger.info("Starting Backup !")
             last_save = time.time()
@@ -74,7 +73,7 @@ if __name__ == "__main__":
                 logger.error(f"err in the backup: {e}")
                 print("")
                 logger.info("Retrying in 5min !")
-                last_save = (time.time()-timing)+5
+                last_save = (time.time()-timing)+5*60
             
             
         
