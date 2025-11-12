@@ -17,7 +17,7 @@ import os
 #define variables
 with open("./conf.json", "r") as f:
     config = json.load(f)
-    timing = int(config["time"])
+    timing = int(config["time"])*60
     folder = config["starting folder"]
 
 last_save = 0
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         time.sleep(0.5)
         
         #compare last backup time to now:
-        dif = time.time() - last_save*60
+        dif = time.time() - last_save
         if dif >= timing:
             logger.info("Starting Backup !")
             last_save = time.time()
